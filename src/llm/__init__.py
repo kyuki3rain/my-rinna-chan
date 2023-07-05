@@ -10,6 +10,10 @@ if torch.cuda.is_available():
 
 log = ""
 
+def reset_log():
+    global log
+    log = ""
+
 def chat(sentence):
     global log
 
@@ -42,5 +46,8 @@ if __name__ == "__main__":
         string = input("あなた: ")
         if string == "exit":
             break
-    
-        print("りんな: " + chat(string))
+        elif string == "reset":
+            reset_log()
+            print("りんな: ログをリセットしました。")
+        else:    
+            print("りんな: " + chat(string))
