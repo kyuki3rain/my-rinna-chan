@@ -32,14 +32,15 @@ def chat(sentence):
         )
     output = tokenizer.decode(output_ids.tolist()[0][token_ids.size(1):])
     log += output
+    log += "<NL>"
     torch.cuda.empty_cache()
 
     return output.replace("</s>", "").replace("<NL>", "\n")
 
 if __name__ == "__main__":
     while True:
-        string = input("文字列を入力してください:\n")
+        string = input("あなた: ")
         if string == "exit":
             break
     
-        print(chat(string))
+        print("りんな: " + chat(string))
